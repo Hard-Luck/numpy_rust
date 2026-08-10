@@ -1,0 +1,8 @@
+[package]
+name = "numpy_rust"
+version = "0.1.0"
+edition = "2024"
+license = "BSD-3-Clause"
+
+[dependencies]
+rand_pcg = "0.10.2"
