@@ -4,14 +4,14 @@ use constants::{FI_DOUBLE, KI_DOUBLE, WI_DOUBLE, ZIGGURAT_NOR_INV_R, ZIGGURAT_NO
 use rand_pcg::{Pcg64 as RandPcg64, rand_core::Rng};
 
 // This file contains code and constants ported or adapted from NumPy 2.5.1
-// random-generation sources, including numpy.random SeedSequence, PCG64,
-// standard normal, Poisson, and ziggurat-derived tables. Applicable upstream
-// license notices and acknowledgements are preserved in THIRD_PARTY_NOTICES.md.
+// random-generation sources, including numpy.random SeedSequence,
+// distribution sampling, and ziggurat-derived tables. The low-level PCG64 core
+// is delegated to rand_pcg. Applicable upstream license notices and
+// acknowledgements are preserved in THIRD_PARTY_NOTICES.md.
 //
 // Ported directly from NumPy 2.5.1:
 // - numpy/random/bit_generator.pyx
 // - numpy/random/_pcg64.pyx
-// - numpy/random/src/pcg64/pcg64.h
 // - numpy/random/src/distributions/distributions.c
 // - numpy/random/src/distributions/ziggurat_constants.h
 
@@ -375,7 +375,7 @@ pub fn target_numpy_version() -> &'static str {
 }
 
 pub fn target_numpy_notes() -> &'static str {
-    "Ported against NumPy 2.5.1 source: SeedSequence in random/bit_generator.pyx, PCG64 in random/_pcg64.pyx and random/src/pcg64, standard normal and Poisson in random/src/distributions/distributions.c, double ziggurat tables in random/src/distributions/ziggurat_constants.h."
+    "Ported against NumPy 2.5.1 source: SeedSequence in random/bit_generator.pyx, the PCG64 seeding path in random/_pcg64.pyx, standard normal and Poisson in random/src/distributions/distributions.c, and double ziggurat tables in random/src/distributions/ziggurat_constants.h. The low-level PCG64 core is provided by rand_pcg."
 }
 
 #[cfg(test)]

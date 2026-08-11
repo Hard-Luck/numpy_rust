@@ -12,9 +12,10 @@ Source anchors used for the port:
 
 - `numpy/random/bit_generator.pyx`: `SeedSequence`, `hashmix`, `mix`, and `generate_state`
 - `numpy/random/_pcg64.pyx`: `PCG64.__init__` seeding path via `generate_state(4, np.uint64)`
-- `numpy/random/src/pcg64/pcg64.h` and `pcg64.c`: PCG64 stepping, output, and seed initialization
 - `numpy/random/src/distributions/distributions.c`: `random_standard_normal`, `random_poisson`, `random_poisson_mult`, `random_poisson_ptrs`, `random_loggam`
 - `numpy/random/src/distributions/ziggurat_constants.h`: double-precision ziggurat tables and constants
+
+`numpy/random/src/pcg64/pcg64.h` and `pcg64.c` remain useful upstream reference material, but the underlying PCG64 engine is now provided by `rand_pcg` rather than a direct Rust port of those files.
 
 Current scope tracks the latest requirement narrowing to normal and Poisson. No intentional algorithmic deviations are introduced in these distribution paths.
 
