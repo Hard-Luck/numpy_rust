@@ -44,7 +44,7 @@ impl Pcg64 {
 
     /// Returns one normal sample with the given location and scale.
     pub fn normal_scalar(&mut self, loc: f64, scale: f64) -> f64 {
-        loc + scale * self.standard_normal()
+        self.standard_normal().mul_add(scale, loc)
     }
 
     /// Returns `size` normal samples with the given location and scale.
